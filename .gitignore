@@ -1,0 +1,17 @@
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+*.synctex.gz
+*.tex
+notatki.txt
+.env
+__pycache__/
+*.pyc
+.venv/
+venv/
+.DS_Store
+Thumbs.db

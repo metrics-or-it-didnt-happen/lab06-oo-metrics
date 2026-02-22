@@ -1,4 +1,4 @@
-# Lab 06: Metryki OO — anatomia klasy pod mikroskopem
+# Lab 06: Metryki OO - anatomia klasy pod mikroskopem
 
 ## Czy wiesz, że...
 
@@ -6,9 +6,9 @@ Według badań (które właśnie wymyśliłem), przeciętna "god class" w projek
 
 ## Kontekst
 
-Do tej pory mierzyliśmy kod "płasko" — linie, złożoność funkcji. Ale programowanie obiektowe to inny świat: klasy, dziedziczenie, powiązania. W 1994 roku Chidamber i Kemerer zaproponowali zestaw sześciu metryk (CK metrics) zaprojektowanych specjalnie do oceny jakości designu obiektowego. Te metryki do dziś są standardem w badaniach nad jakością oprogramowania.
+Do tej pory mierzyliśmy kod "płasko" - linie, złożoność funkcji. Ale programowanie obiektowe to inny świat: klasy, dziedziczenie, powiązania. W 1994 roku Chidamber i Kemerer zaproponowali zestaw sześciu metryk (CK metrics) zaprojektowanych specjalnie do oceny jakości designu obiektowego. Te metryki do dziś są standardem w badaniach nad jakością oprogramowania.
 
-Każda metryka CK odpowiada na inne pytanie: czy klasa jest zbyt duża? Czy hierarchia dziedziczenia jest zbyt głęboka? Czy klasy są zbyt mocno ze sobą powiązane? Czy klasa jest spójna? Odpowiedzi na te pytania pomagają identyfikować problemy projektowe — w szczególności niesławną "god class", która robi wszystko i wie o wszystkim.
+Każda metryka CK odpowiada na inne pytanie: czy klasa jest zbyt duża? Czy hierarchia dziedziczenia jest zbyt głęboka? Czy klasy są zbyt mocno ze sobą powiązane? Czy klasa jest spójna? Odpowiedzi na te pytania pomagają identyfikować problemy projektowe - w szczególności niesławną "god class", która robi wszystko i wie o wszystkim.
 
 ## Cel laboratorium
 
@@ -21,7 +21,7 @@ Po tym laboratorium będziesz potrafić:
 ## Wymagania wstępne
 
 - Python 3.9+
-- `radon` (`pip install radon`) — do obliczania CC metod
+- `radon` (`pip install radon`) - do obliczania CC metod
 - Znajomość programowania obiektowego (klasy, dziedziczenie, metody)
 - Sklonowany projekt open-source z rozbudowaną hierarchią klas
 
@@ -38,12 +38,12 @@ Po tym laboratorium będziesz potrafić:
 | **RFC** | Response For a Class | Ile metod może zostać wywołanych w odpowiedzi na wiadomość | Złożone zachowanie |
 | **LCOM** | Lack of Cohesion of Methods | Ile metod nie współdzieli atrybutów | Klasa powinna być podzielona |
 
-### "God class" — jak ją rozpoznać?
+### "God class" - jak ją rozpoznać?
 
 Klasa jest potencjalną "god class" jeśli:
-- **WMC > 50** — ma dużo złożonych metod
-- **CBO > 15** — jest powiązana z wieloma innymi klasami
-- **LCOM jest wysoki** — metody nie współdzielą atrybutów (brak spójności)
+- **WMC > 50** - ma dużo złożonych metod
+- **CBO > 15** - jest powiązana z wieloma innymi klasami
+- **LCOM jest wysoki** - metody nie współdzielą atrybutów (brak spójności)
 
 ## Zadania
 
@@ -68,9 +68,9 @@ radon cc requests/src/ -s -a | grep "^    C "
 
 **Krok 3:** Dla każdej z 3 klas policz ręcznie (na papierze lub w głowie):
 
-- **WMC** — ile metod ma klasa? Jaka jest suma ich CC? (użyj `radon cc plik.py -s`)
-- **DIT** — po czym dziedziczy? Ile poziomów do `object`?
-- **CBO** — ile innych klas/modułów importuje lub referencuje?
+- **WMC** - ile metod ma klasa? Jaka jest suma ich CC? (użyj `radon cc plik.py -s`)
+- **DIT** - po czym dziedziczy? Ile poziomów do `object`?
+- **CBO** - ile innych klas/modułów importuje lub referencuje?
 
 **Krok 4:** Zweryfikuj swoje obliczenia WMC za pomocą radona:
 
@@ -80,7 +80,7 @@ radon cc requests/src/requests/models.py -s
 
 Suma CC metod klasy = WMC. Zgadza się z Twoimi obliczeniami?
 
-**Krok 5:** Zapiszcie wyniki i wnioski — która klasa wygląda najgorzej?
+**Krok 5:** Zapiszcie wyniki i wnioski - która klasa wygląda najgorzej?
 
 ### Zadanie 2: OO Metrics Analyzer (60 min)
 
@@ -91,9 +91,9 @@ Napiszcie skrypt `oo_metrics.py`, który analizuje klasy w projekcie Pythonowym 
 1. Przejść rekurencyjnie po plikach `.py`
 2. Sparsować każdy plik modułem `ast`
 3. Dla każdej znalezionej klasy policzyć:
-   - **WMC** — suma CC metod (z radona)
-   - **DIT** — głębokość dziedziczenia (analiza baz klas)
-   - **CBO** — ile innych klas/modułów jest referencowanych w ciele klasy
+   - **WMC** - suma CC metod (z radona)
+   - **DIT** - głębokość dziedziczenia (analiza baz klas)
+   - **CBO** - ile innych klas/modułów jest referencowanych w ciele klasy
 4. Oznaczyć potencjalne "god classes" (WMC > próg AND CBO > próg)
 5. Wydrukować raport
 
@@ -334,11 +334,11 @@ Klasa                               WMC   DIT   CBO  Metod  God?
     WMC=68, CBO=18, metod=24
 ```
 
-### Zadanie 3: LCOM (45 min) — dla ambitnych
+### Zadanie 3: LCOM (45 min) - dla ambitnych
 
 LCOM (Lack of Cohesion of Methods) to najtrudniejsza z metryk CK, ale też jedna z najciekawszych.
 
-**Intuicja:** Klasa jest spójna, jeśli jej metody operują na tych samych atrybutach. Jeśli metody dzielą się na grupy, z których każda dotyka innych atrybutów — klasa powinna być podzielona.
+**Intuicja:** Klasa jest spójna, jeśli jej metody operują na tych samych atrybutach. Jeśli metody dzielą się na grupy, z których każda dotyka innych atrybutów - klasa powinna być podzielona.
 
 **LCOM (wersja Henderson-Sellers):**
 - Dla każdego atrybutu policz ile metod go używa
@@ -402,8 +402,8 @@ def _compute_lcom(self, node: ast.ClassDef) -> float:
 
 W swoim branchu `lab06_nazwisko1_nazwisko2`:
 
-1. **`oo_metrics.py`** — działający skrypt z zadania 2
-2. **`answers.md`** — ręczne obliczenia metryk z zadania 1 + wnioski
+1. **`oo_metrics.py`** - działający skrypt z zadania 2
+2. **`answers.md`** - ręczne obliczenia metryk z zadania 1 + wnioski
 3. *(opcjonalnie)* rozszerzenie skryptu o **LCOM** z zadania 3
 
 ## Kryteria oceny
@@ -418,7 +418,7 @@ W swoim branchu `lab06_nazwisko1_nazwisko2`:
 
 ## FAQ
 
-**P: Moduł `ast` nie rozwiązuje importów — jak mam policzyć prawdziwy DIT?**
+**P: Moduł `ast` nie rozwiązuje importów - jak mam policzyć prawdziwy DIT?**
 O: Nie musisz rozwiązywać importów. Prosta heurystyka (policz jawne bazy, odfiltruj `object`) wystarczy na potrzeby tego laba. Pełna analiza MRO wymagałaby dynamicznego importowania modułów, co jest poza zakresem.
 
 **P: CBO wychodzi mi ogromne, bo liczę każdy `ast.Name`.**
@@ -436,10 +436,10 @@ O: Wybierz projekt z rozbudowaną hierarchią OO: `django`, `sqlalchemy`, `boto3
 ## Przydatne linki
 
 - [Python ast module](https://docs.python.org/3/library/ast.html)
-- [Green Tree Snakes — ast tutorial](https://greentreesnakes.readthedocs.io/)
-- [Chidamber & Kemerer, 1994 — oryginalny paper](https://doi.org/10.1109/32.295895)
+- [Green Tree Snakes - ast tutorial](https://greentreesnakes.readthedocs.io/)
+- [Chidamber & Kemerer, 1994 - oryginalny paper](https://doi.org/10.1109/32.295895)
 - [radon documentation](https://radon.readthedocs.io/)
 - [God class (Wikipedia)](https://en.wikipedia.org/wiki/God_object)
 
 ---
-*"Każdy problem w informatyce można rozwiązać dodając kolejną warstwę abstrakcji. Oprócz problemu zbyt wielu warstw abstrakcji."* — David Wheeler (prawie na pewno)
+*"Każdy problem w informatyce można rozwiązać dodając kolejną warstwę abstrakcji. Oprócz problemu zbyt wielu warstw abstrakcji."* - David Wheeler (prawie na pewno)

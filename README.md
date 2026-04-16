@@ -51,19 +51,22 @@ Klasa jest potencjalną "god class" jeśli:
 
 Zanim napiszemy automat, policzmy metryki ręcznie, żeby zrozumieć co mierzymy.
 
-**Krok 1:** Wybierz projekt OSS ze sporą liczbą klas. Propozycje:
+**Krok 1:** Wybierz projekt OSS ze sporą liczbą klas. Sklonuj go do `/tmp`, żeby nie zaśmiecać katalogu roboczego:
 
 ```bash
+cd /tmp
 git clone https://github.com/psf/requests.git
 git clone https://github.com/pallets/flask.git
 git clone https://github.com/encode/httpx.git
 ```
 
+> **Uwaga:** Analizowane projekty klonuj do `/tmp` (lub innego katalogu poza swoim repo). Nie commitujcie cudzego kodu do swojego brancha.
+
 **Krok 2:** Znajdź 3 klasy o różnej wielkości/złożoności. Np. w requests:
 
 ```bash
-# Pokaż klasy w projekcie
-radon cc requests/src/ -s -a | grep "^    C "
+# Pokaż klasy w projekcie (radon oznacza klasy literą "C" z wcięciem 4 spacji)
+radon cc requests/src/requests/ -s -a | grep "^    C "
 ```
 
 **Krok 3:** Dla każdej z 3 klas policz ręcznie (na papierze lub w głowie):
@@ -78,7 +81,7 @@ radon cc requests/src/ -s -a | grep "^    C "
 radon cc requests/src/requests/models.py -s
 ```
 
-Suma CC metod klasy = WMC. Zgadza się z Twoimi obliczeniami?
+Suma CC metod klasy = WMC. Zgadza się z Twoimi obliczeniami? (Jeśli kusi Cię żeby wziąć `item["complexity"]` z JSONa radona zamiast sumować metody - patrz FAQ, zanim stracisz wieczór na debugowanie.)
 
 **Krok 5:** Zapiszcie wyniki i wnioski - która klasa wygląda najgorzej?
 
@@ -165,7 +168,8 @@ class OOAnalyzer(ast.NodeVisitor):
         # TODO: Twój kod tutaj
         # Prosta wersja: DIT = liczba jawnych baz (bez object)
         # Lepsza wersja: sprawdź czy bazy też mają bazy (rekurencja po AST)
-        pass
+        # Panika? FAQ ma sekcję o DIT i importach.
+        return 0
 
     def _compute_cbo(self, node: ast.ClassDef) -> int:
         """Compute Coupling Between Objects.
@@ -179,7 +183,8 @@ class OOAnalyzer(ast.NodeVisitor):
         # - Szukaj ast.Name (referencje do nazw) i ast.Attribute
         # - Odfiltruj self, cls, wbudowane typy (str, int, list, dict...)
         # - Policz unikatowe nazwy
-        pass
+        # CBO wychodzi 3000? Spokojnie, FAQ wyjaśnia co filtrować.
+        return 0
 
 
 def get_wmc_from_radon(filepath: str) -> dict[str, int]:
@@ -197,9 +202,12 @@ def get_wmc_from_radon(filepath: str) -> dict[str, int]:
     for items in data.values():
         for item in items:
             if item["type"] == "class":
-                total_cc = item["complexity"]
+                total_cc = sum(m["complexity"] for m in item.get("methods", []))
                 wmc[item["name"]] = total_cc
     return wmc
+
+
+EXCLUDED_DIRS = {".venv", "venv", "__pycache__", ".git", ".tox", "node_modules"}
 
 
 def analyze_project(project_path: Path) -> list[ClassMetrics]:
@@ -207,6 +215,8 @@ def analyze_project(project_path: Path) -> list[ClassMetrics]:
     all_classes = []
 
     for py_file in sorted(project_path.rglob("*.py")):
+        if any(part in EXCLUDED_DIRS for part in py_file.parts):
+            continue
         try:
             source = py_file.read_text(encoding="utf-8", errors="replace")
             tree = ast.parse(source, filename=str(py_file))
@@ -243,7 +253,15 @@ def print_report(classes: list[ClassMetrics]) -> None:
     print(f"\n{'=' * 80}")
     print(f"RAPORT METRYK OBIEKTOWYCH (CK)")
     print(f"{'=' * 80}")
-    print(f"\nZnaleziono {len(classes)} klas\n")
+    # Żeby prof. Miodek spał spokojnie
+    n = len(classes)
+    if n == 1:
+        word = "klasę"
+    elif n % 10 in (2, 3, 4) and n % 100 not in (12, 13, 14):
+        word = "klasy"
+    else:
+        word = "klas"
+    print(f"\nZnaleziono {n} {word}\n")
 
     # Sortuj po WMC malejąco
     by_wmc = sorted(classes, key=lambda c: c.wmc, reverse=True)
@@ -304,7 +322,9 @@ if __name__ == "__main__":
     main()
 ```
 
-**Oczekiwany output (przykład):**
+**Oczekiwany output (przykład dla `requests`):**
+
+Twoje konkretne liczby mogą się różnić w zależności od implementacji CBO i DIT - ważne, żeby WMC zgadzał się z radonem, a reszta była rozsądna. Orientacyjnie top 5 po WMC dla `requests`:
 
 ```
 Analizuję metryki OO: requests/src/
@@ -313,26 +333,19 @@ Analizuję metryki OO: requests/src/
 RAPORT METRYK OBIEKTOWYCH (CK)
 ================================================================================
 
-Znaleziono 23 klasy
+Znaleziono 44 klasy
 
 Klasa                               WMC   DIT   CBO  Metod  God?
 ---------------------------------------------------------------------------
-  Session                            68     1    18     24  !!!
-  Response                           42     1    12     19
-  PreparedRequest                    38     1    11     14
-  Request                            15     1     8      7
-  HTTPAdapter                        14     1     9      6
+  Response                           68     0   ...     22  !!!
+  HTTPAdapter                        64     1   ...     15  !!!
+  PreparedRequest                    63     2   ...     13  !!!
+  RequestsCookieJar                  63     2   ...     24
+  Session                            52     1   ...     19  !!!
   ...
-
---- Statystyki ---
-  WMC: śr. 12.3, max 68 (Session)
-  DIT: śr. 0.8, max 2
-  CBO: śr. 5.4, max 18
-
---- Potencjalne god classes (1) ---
-  Session (requests/src/requests/sessions.py:341)
-    WMC=68, CBO=18, metod=24
 ```
+
+(WMC powinien być dokładny - to suma CC metod z radona. CBO zależy od Twojej implementacji, więc zamiast `...` zobaczysz swoje wartości. God classes to te, gdzie WMC > 50 AND CBO > 15 - ile ich będzie, zależy od Twojego CBO.)
 
 ### Zadanie 3: LCOM (45 min) - dla ambitnych
 
@@ -430,8 +443,20 @@ O: Tak. `__init__` to normalna metoda z punktu widzenia CC. Dunder methods (`__s
 **P: W Pythonie dziedziczenie wielokrotne jest częste. Jak liczyć DIT?**
 O: Weź najdłuższą ścieżkę do `object`. Jeśli klasa dziedziczy po A i B, a A dziedziczy po C, to DIT = max(DIT(A), DIT(B)) + 1. Ale w prostej wersji wystarczy policzyć jawne bazy.
 
-**P: Mój projekt OSS nie ma dużo klas (np. requests jest dość płaski).**
-O: Wybierz projekt z rozbudowaną hierarchią OO: `django`, `sqlalchemy`, `boto3`, `celery`. Django ma setki klas z wielopoziomowym dziedziczeniem.
+**P: Mój projekt OSS nie ma dużo klas.**
+O: `requests` to dobre minimum - ma ~44 klasy z kilkoma god class kandydatami. Jeśli chcesz więcej materiału: `django`, `sqlalchemy`, `boto3`, `celery`. Django ma setki klas z wielopoziomowym dziedziczeniem.
+
+**P: Radon daje mi `item["complexity"]` dla klasy. To jest WMC, prawda?**
+O: Nie. `item["complexity"]` to złożoność cyklomatyczna *samej klasy* (CC klasy jako bloku), nie suma CC jej metod. WMC = suma CC poszczególnych metod. Klasa z jedną metodą o CC=50 i klasa z 50 metodami o CC=1 mają ten sam WMC, ale `item["complexity"]` będzie drastycznie inny. Użyj `item["methods"]` żeby dostać się do metod i zsumować ich CC.
+
+**P: Mój skrypt znalazł 0 god classes. Czy jestem geniuszem designu obiektowego?**
+O: Bardziej prawdopodobne, że masz buga w CBO. Sprawdź na `requests` - `Session`, `Response`, `HTTPAdapter` i `PreparedRequest` powinny mieć WMC > 50. Jeśli WMC się zgadza a CBO nie - Twoje filtrowanie jest zbyt agresywne.
+
+**P: Mogę użyć AI do napisania tego skryptu?**
+O: Możesz użyć czego chcesz. Polecam [opencode](https://github.com/opencode-ai/opencode) + Qwen3.5-coder - darmowe, lokalne, nie wysyła Twojego kodu na serwery korporacji. Ale niezależnie od narzędzia - rozumiej co oddajesz. Kod, którego nie potrafisz wyjaśnić, nie jest Twoim kodem.
+
+**P: Moja klasa ma LCOM = 1.0. Co zrobiłem źle?**
+O: Nic - to znaczy, że Twoja klasa jest zbiorem niepowiązanych metod, które nie dzielą atrybutów. Albo odkryłeś god class, albo utility class. Albo nie znalazłeś referencji do `self.atrybut`, bo zapomniałeś o `ast.walk`.
 
 ## Przydatne linki
 
@@ -443,3 +468,5 @@ O: Wybierz projekt z rozbudowaną hierarchią OO: `django`, `sqlalchemy`, `boto3
 
 ---
 *"Każdy problem w informatyce można rozwiązać dodając kolejną warstwę abstrakcji. Oprócz problemu zbyt wielu warstw abstrakcji."* - David Wheeler (prawie na pewno)
+
+*"God class to taka klasa, która wie o wszystkim, robi wszystko i jest jedyną rzeczą, której dotknięcie powoduje awarię produkcji o 3 w nocy."* - anonimowy programista po trzecim on-callu z rzędu

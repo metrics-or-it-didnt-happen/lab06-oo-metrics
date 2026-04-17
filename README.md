@@ -6,7 +6,7 @@ Według badań (które właśnie wymyśliłem), przeciętna "god class" w projek
 
 ## Kontekst
 
-Do tej pory mierzyliśmy kod "płasko" - linie, złożoność funkcji. Ale programowanie obiektowe to inny świat: klasy, dziedziczenie, powiązania. W 1994 roku Chidamber i Kemerer zaproponowali zestaw sześciu metryk (CK metrics) zaprojektowanych specjalnie do oceny jakości designu obiektowego. Te metryki do dziś są standardem w badaniach nad jakością oprogramowania.
+Do tej pory mierzyliśmy kod "płasko" - linie, złożoność funkcji. Ale programowanie obiektowe to inny świat: klasy, dziedziczenie, woda, ziemia, halucynacja, hemoglobina, taka sytuacja. W 1994 roku Chidamber i Kemerer zaproponowali zestaw sześciu metryk (CK metrics) zaprojektowanych specjalnie do oceny jakości designu obiektowego. Te metryki do dziś są standardem w badaniach nad jakością oprogramowania.
 
 Każda metryka CK odpowiada na inne pytanie: czy klasa jest zbyt duża? Czy hierarchia dziedziczenia jest zbyt głęboka? Czy klasy są zbyt mocno ze sobą powiązane? Czy klasa jest spójna? Odpowiedzi na te pytania pomagają identyfikować problemy projektowe - w szczególności niesławną "god class", która robi wszystko i wie o wszystkim.
 

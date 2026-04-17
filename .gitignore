@@ -1,18 +1,16 @@
-*.aux
-*.log
-*.nav
-*.out
-*.snm
-*.toc
-*.vrb
-*.synctex.gz
-*.tex
-notatki.txt
-.env
+# Python-generated files
 __pycache__/
-*.pyc
-.venv/
-venv/
-.DS_Store
-Thumbs.db
-prezentacja.pdf
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# uv lock
+uv.lock
+
+# Raw tool outputs
+radon_output.json

@@ -452,9 +452,6 @@ O: Nie. `item["complexity"]` to złożoność cyklomatyczna *samej klasy* (CC kl
 **P: Mój skrypt znalazł 0 god classes. Czy jestem geniuszem designu obiektowego?**
 O: Bardziej prawdopodobne, że masz buga w CBO. Sprawdź na `requests` - `Session`, `Response`, `HTTPAdapter` i `PreparedRequest` powinny mieć WMC > 50. Jeśli WMC się zgadza a CBO nie - Twoje filtrowanie jest zbyt agresywne.
 
-**P: Mogę użyć AI do napisania tego skryptu?**
-O: Możesz użyć czego chcesz. Polecam [opencode](https://github.com/opencode-ai/opencode) + Qwen3.5-coder - darmowe, lokalne, nie wysyła Twojego kodu na serwery korporacji. Ale niezależnie od narzędzia - rozumiej co oddajesz. Kod, którego nie potrafisz wyjaśnić, nie jest Twoim kodem.
-
 **P: Moja klasa ma LCOM = 1.0. Co zrobiłem źle?**
 O: Nic - to znaczy, że Twoja klasa jest zbiorem niepowiązanych metod, które nie dzielą atrybutów. Albo odkryłeś god class, albo utility class. Albo nie znalazłeś referencji do `self.atrybut`, bo zapomniałeś o `ast.walk`.
 
@@ -470,3 +467,5 @@ O: Nic - to znaczy, że Twoja klasa jest zbiorem niepowiązanych metod, które n
 *"Każdy problem w informatyce można rozwiązać dodając kolejną warstwę abstrakcji. Oprócz problemu zbyt wielu warstw abstrakcji."* - David Wheeler (prawie na pewno)
 
 *"God class to taka klasa, która wie o wszystkim, robi wszystko i jest jedyną rzeczą, której dotknięcie powoduje awarię produkcji o 3 w nocy."* - anonimowy programista po trzecim on-callu z rzędu
+
+(screen.jpg)

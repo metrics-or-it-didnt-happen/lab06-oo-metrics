@@ -1,0 +1,140 @@
+Zadanie 1 - Teoria w praktyce (projekt: Flask)
+
+Klasy
+Blueprint (duza, z sansio/blueprints.py)
+ScriptInfo
+SecureCookieSessionInterface
+
+Blueprint:
+- 28 metod lacznie:
+__init__ = 4
+_check_setup_finished = 2
+record = 1
+record_once = 1
+make_setup_state = 1
+register_blueprint = 2
+register = 23
+_merge_blueprint_funcs = 6
+add_url_rule = 6
+app_template_filter = 1
+app_template_filter = 1
+app_template_filter = 2
+add_app_template_filter = 1
+app_template_test = 1
+app_template_test = 1
+app_template_test = 2
+add_app_template_test = 1
+app_template_global = 1
+app_template_global = 1
+app_template_global = 2
+add_app_template_global = 1
+before_app_request = 1
+after_app_request = 1
+teardown_app_request = 1
+app_context_processor = 1
+app_errorhandler = 1
+app_url_value_preprocessor = 1
+app_url_defaults = 1
+
+WMC:
+WMC = 4 + 2 + 1 + 1 + 1 + 2 + 23 + 6 + 6 + 1 + 1 + 2 + 1 + 1 + 1 + 2 + 1 + 1 + 1 + 2 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 68
+
+DIT:
+Klasa dziedziczy po Scaffold (jawna baza).
+
+DIT 1
+
+CBO (recznie):
+- App
+- Blueprint
+- BlueprintSetupState
+- DeferredSetupFunction
+- T_after_request
+- T_before_request
+- T_error_handler
+- T_teardown
+- T_template_context_processor
+- T_template_filter
+- T_template_global
+- T_template_test
+- T_url_defaults
+- T_url_value_preprocessor
+- _sentinel
+- defaultdict
+- ft
+- os
+- setupmethod
+- t
+- update_wrapper
+
+CBO: 21
+
+ScriptInfo
+
+Metody
+- __init__ = 1
+- load_app = 8
+
+WMC:
+WMC = 1 + 8 = 9
+
+DIT:
+Brak jawnej klasy bazowej (dziedziczenie bezposrednio po object).
+DIT = 0
+
+CBO (recznie):
+Referencje do zewnetrznych nazw w klasie:
+- Flask (typy)
+- get_load_dotenv
+- re
+- prepare_import
+- locate_app
+- NoAppException
+- get_debug_flag
+- t
+
+CBO: 8
+
+SecureCookieSessionInterface
+
+- get_signing_serializer = 3
+- open_session = 4
+- save_session = 5
+
+WMC = 3 + 4 + 5 = 12
+
+DIT:
+Klasa dziedziczy po SessionInterface,
+SessionInterface dziedziczy po object.
+DIT = 1
+
+CBO:
+Referencje do zewnetrznych nazw w klasie (przykladowo):
+- _lazy_sha1
+- session_json_serializer
+- URLSafeTimedSerializer
+- Flask
+- Request
+- Response
+- SessionMixin
+- SecureCookieSession
+- BadSignature
+CBO: 9
+
+
+----------------------------------------
+Weryfikacja WMC (krok 4)
+----------------------------------------
+WMC liczony recznie zgadza sie z sumowaniem CC metod z radona:
+- Blueprint (sansio): suma CC metod = 68
+- ScriptInfo: 1 + 8 = 9
+- SecureCookieSessionInterface: 3 + 4 + 5 = 12
+
+
+----------------------------------------
+Wnioski (krok 5)
+----------------------------------------
+- Blueprint (sansio) wyglada na god class.
+- Spelnia progi z README: WMC > 50 i CBO > 15 (68 i 21).
+- ScriptInfo i SecureCookieSessionInterface nie spelniaja progow god class.
+- Najgorsza klasa w tej probce: Blueprint (sansio/blueprints.py).

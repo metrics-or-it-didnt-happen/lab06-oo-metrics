@@ -1,0 +1,192 @@
+Analizuję: /tmp/django
+
+================================================================================
+RAPORT METRYK OBIEKTOWYCH (CK)
+================================================================================
+
+Znaleziono 10931 klas
+
+Klasa                                 WMC   DIT   CBO  Metod   LCOM  God?
+---------------------------------------------------------------------------
+Query                                 574     1   515     93 0.97  !!!
+Model                                 529     1   417     66 0.97  !!!
+BaseDatabaseSchemaEditor              484     0   349     80 0.98  !!!
+QuerySet                              472     1   435    116 0.97  !!!
+SchemaTests                           448     1   442    253 0.96  !!!
+MigrationAutodetector                 414     0   356     52 0.96  !!!
+SQLCompiler                           358     0   413     33 0.94  !!!
+ModelAdmin                            284     1   399     68 0.98  !!!
+Field                                 230     1   228     69 0.98  !!!
+OperationTests                        228     1   381    165 0.93  !!!
+Options                               206     0   199     48 0.97  !!!
+GEOSTest                              182     1   353     88 0.89  !!!
+BaseDatabaseOperations                175     0   154     83 0.99  !!!
+AutodetectorTests                     170     2   283    163 0.95  !!!
+DatabaseOperations                    165     1   167     54 0.98  !!!
+SimpleTestCase                        153     1   215     41 0.97  !!!
+AggregateTestCase                     148     1   275    125 0.96  !!!
+ProjectState                          146     0   131     37 0.90  !!!
+FormsTestCase                         142     1   342    124 0.94  !!!
+ManyToManyField                       129     2   163     25 0.97  !!!
+BaseDatabaseWrapper                   126     0   108     63 0.98  !!!
+BaseModelAdminChecks                  125     0    84     27 1.00  !!!
+SessionBase                           124     0    63     68 0.97  !!!
+UniqueConstraint                      124     1   121     12 0.69  !!!
+GEOSGeometryBase                      122     1   145     84 0.96  !!!
+TestQuerying                          118     1    94     83 0.84  !!!
+AdminViewBasicTest                    116     2   190     85 0.90  !!!
+ChangeList                            115     0   184     14 0.94  !!!
+IfTagTests                            114     1     8    114 0.50 
+FormsFormsetTestCase                  112     1   152     73 0.88  !!!
+
+--- Statystyki ---
+WMC: śr 4.5, max 574
+DIT: śr 1.0, max 6
+CBO: śr 12.3, max 515
+LCOM: śr 0.2, max 1.0
+
+--- God classes (144) ---
+AppConfig (/tmp/django/django/apps/config.py:13) WMC=54, CBO=67, LCOM=0.86
+Apps (/tmp/django/django/apps/registry.py:13) WMC=72, CBO=90, LCOM=0.88
+BaseModelAdminChecks (/tmp/django/django/contrib/admin/checks.py:177) WMC=125, CBO=84, LCOM=1.00
+ModelAdminChecks (/tmp/django/django/contrib/admin/checks.py:828) WMC=81, CBO=81, LCOM=1.00
+BaseModelAdmin (/tmp/django/django/contrib/admin/options.py:131) WMC=109, CBO=156, LCOM=0.98
+ModelAdmin (/tmp/django/django/contrib/admin/options.py:639) WMC=284, CBO=399, LCOM=0.98
+AdminSite (/tmp/django/django/contrib/admin/sites.py:31) WMC=92, CBO=160, LCOM=0.97
+ChangeList (/tmp/django/django/contrib/admin/views/main.py:67) WMC=115, CBO=184, LCOM=0.94
+ModelBackend (/tmp/django/django/contrib/auth/backends.py:54) WMC=66, CBO=60, LCOM=0.94
+Command (/tmp/django/django/contrib/auth/management/commands/createsuperuser.py:26) WMC=71, CBO=93, LCOM=0.86
+OGRGeometry (/tmp/django/django/contrib/gis/gdal/geometries.py:65) WMC=106, CBO=138, LCOM=0.96
+GDALRaster (/tmp/django/django/contrib/gis/gdal/raster/source.py:70) WMC=76, CBO=132, LCOM=0.92
+SpatialReference (/tmp/django/django/contrib/gis/gdal/srs.py:45) WMC=61, CBO=62, LCOM=0.94
+GEOSCoordSeq (/tmp/django/django/contrib/gis/geos/coordseq.py:16) WMC=73, CBO=55, LCOM=0.96
+GEOSGeometryBase (/tmp/django/django/contrib/gis/geos/geometry.py:23) WMC=122, CBO=145, LCOM=0.96
+ListMixin (/tmp/django/django/contrib/gis/geos/mutable_list.py:16) WMC=66, CBO=47, LCOM=0.97
+LayerMapping (/tmp/django/django/contrib/gis/utils/layermapping.py:59) WMC=90, CBO=183, LCOM=0.93
+ExclusionConstraint (/tmp/django/django/contrib/postgres/constraints.py:22) WMC=68, CBO=106, LCOM=0.82
+ArrayField (/tmp/django/django/contrib/postgres/fields/array.py:21) WMC=64, CBO=96, LCOM=0.90
+SessionBase (/tmp/django/django/contrib/sessions/backends/base.py:35) WMC=124, CBO=63, LCOM=0.97
+Command (/tmp/django/django/contrib/staticfiles/management/commands/collectstatic.py:13) WMC=76, CBO=89, LCOM=0.86
+HashedFilesMixin (/tmp/django/django/contrib/staticfiles/storage.py:53) WMC=77, CBO=140, LCOM=0.95
+BaseCache (/tmp/django/django/core/cache/backends/base.py:58) WMC=72, CBO=42, LCOM=0.97
+BaseHandler (/tmp/django/django/core/handlers/base.py:21) WMC=72, CBO=84, LCOM=0.89
+EmailBackend (/tmp/django/django/core/mail/backends/smtp.py:16) WMC=52, CBO=82, LCOM=0.87
+EmailMessage (/tmp/django/django/core/mail/message.py:230) WMC=78, CBO=100, LCOM=0.92
+BaseCommand (/tmp/django/django/core/management/base.py:193) WMC=72, CBO=115, LCOM=0.93
+Command (/tmp/django/django/core/management/commands/inspectdb.py:10) WMC=97, CBO=121, LCOM=1.00
+Command (/tmp/django/django/core/management/commands/loaddata.py:44) WMC=76, CBO=130, LCOM=0.91
+Command (/tmp/django/django/core/management/commands/makemessages.py:199) WMC=111, CBO=149, LCOM=0.88
+Command (/tmp/django/django/core/management/commands/makemigrations.py:26) WMC=101, CBO=173, LCOM=0.82
+Command (/tmp/django/django/core/management/commands/migrate.py:18) WMC=103, CBO=165, LCOM=0.89
+Command (/tmp/django/django/core/management/commands/shell.py:15) WMC=52, CBO=94, LCOM=0.87
+TemplateCommand (/tmp/django/django/core/management/templates.py:25) WMC=64, CBO=154, LCOM=0.93
+BaseDatabaseWrapper (/tmp/django/django/db/backends/base/base.py:30) WMC=126, CBO=108, LCOM=0.98
+BaseDatabaseCreation (/tmp/django/django/db/backends/base/creation.py:19) WMC=54, CBO=119, LCOM=0.91
+BaseDatabaseOperations (/tmp/django/django/db/backends/base/operations.py:18) WMC=175, CBO=154, LCOM=0.99
+BaseDatabaseSchemaEditor (/tmp/django/django/db/backends/base/schema.py:78) WMC=484, CBO=349, LCOM=0.98
+DatabaseIntrospection (/tmp/django/django/db/backends/mysql/introspection.py:31) WMC=56, CBO=108, LCOM=0.86
+DatabaseOperations (/tmp/django/django/db/backends/mysql/operations.py:13) WMC=105, CBO=100, LCOM=0.95
+DatabaseSchemaEditor (/tmp/django/django/db/backends/mysql/schema.py:6) WMC=57, CBO=99, LCOM=0.92
+FormatStylePlaceholderCursor (/tmp/django/django/db/backends/oracle/base.py:489) WMC=53, CBO=69, LCOM=0.90
+DatabaseCreation (/tmp/django/django/db/backends/oracle/creation.py:12) WMC=93, CBO=51, LCOM=0.95
+DatabaseOperations (/tmp/django/django/db/backends/oracle/operations.py:26) WMC=165, CBO=167, LCOM=0.98
+DatabaseSchemaEditor (/tmp/django/django/db/backends/oracle/schema.py:13) WMC=55, CBO=82, LCOM=0.94
+DatabaseWrapper (/tmp/django/django/db/backends/postgresql/base.py:98) WMC=79, CBO=122, LCOM=0.95
+DatabaseOperations (/tmp/django/django/db/backends/postgresql/operations.py:27) WMC=92, CBO=124, LCOM=0.95
+DatabaseSchemaEditor (/tmp/django/django/db/backends/postgresql/schema.py:7) WMC=72, CBO=97, LCOM=0.95
+DatabaseIntrospection (/tmp/django/django/db/backends/sqlite3/introspection.py:59) WMC=91, CBO=103, LCOM=0.97
+DatabaseOperations (/tmp/django/django/db/backends/sqlite3/operations.py:29) WMC=98, CBO=134, LCOM=0.97
+DatabaseSchemaEditor (/tmp/django/django/db/backends/sqlite3/schema.py:12) WMC=109, CBO=139, LCOM=0.90
+MigrationAutodetector (/tmp/django/django/db/migrations/autodetector.py:43) WMC=414, CBO=356, LCOM=0.96
+MigrationExecutor (/tmp/django/django/db/migrations/executor.py:10) WMC=107, CBO=121, LCOM=0.83
+MigrationGraph (/tmp/django/django/db/migrations/graph.py:64) WMC=72, CBO=63, LCOM=0.85
+MigrationLoader (/tmp/django/django/db/migrations/loader.py:21) WMC=99, CBO=126, LCOM=0.91
+CreateModel (/tmp/django/django/db/migrations/operations/models.py:44) WMC=90, CBO=95, LCOM=0.67
+ProjectState (/tmp/django/django/db/migrations/state.py:95) WMC=146, CBO=131, LCOM=0.90
+ModelState (/tmp/django/django/db/migrations/state.py:737) WMC=78, CBO=108, LCOM=0.65
+ModelBase (/tmp/django/django/db/models/base.py:95) WMC=89, CBO=130, LCOM=0.00
+Model (/tmp/django/django/db/models/base.py:501) WMC=529, CBO=417, LCOM=0.97
+UniqueConstraint (/tmp/django/django/db/models/constraints.py:263) WMC=124, CBO=121, LCOM=0.69
+Collector (/tmp/django/django/db/models/deletion.py:117) WMC=110, CBO=136, LCOM=0.90
+BaseExpression (/tmp/django/django/db/models/expressions.py:174) WMC=88, CBO=87, LCOM=0.94
+Field (/tmp/django/django/db/models/fields/__init__.py:120) WMC=230, CBO=228, LCOM=0.98
+GeneratedField (/tmp/django/django/db/models/fields/generated.py:11) WMC=52, CBO=79, LCOM=0.84
+RelatedField (/tmp/django/django/db/models/fields/related.py:98) WMC=69, CBO=99, LCOM=0.94
+ForeignObject (/tmp/django/django/db/models/fields/related.py:544) WMC=79, CBO=127, LCOM=0.97
+ForeignKey (/tmp/django/django/db/models/fields/related.py:962) WMC=83, CBO=128, LCOM=0.97
+ManyToManyField (/tmp/django/django/db/models/fields/related.py:1450) WMC=129, CBO=163, LCOM=0.97
+Index (/tmp/django/django/db/models/indexes.py:14) WMC=86, CBO=95, LCOM=0.75
+Lookup (/tmp/django/django/db/models/lookups.py:28) WMC=54, CBO=67, LCOM=0.88
+Options (/tmp/django/django/db/models/options.py:90) WMC=206, CBO=199, LCOM=0.97
+QuerySet (/tmp/django/django/db/models/query.py:323) WMC=472, CBO=435, LCOM=0.97
+SQLCompiler (/tmp/django/django/db/models/sql/compiler.py:42) WMC=358, CBO=413, LCOM=0.94
+SQLInsertCompiler (/tmp/django/django/db/models/sql/compiler.py:1682) WMC=60, CBO=90, LCOM=0.88
+Query (/tmp/django/django/db/models/sql/query.py:231) WMC=574, CBO=515, LCOM=0.97
+WhereNode (/tmp/django/django/db/models/sql/where.py:21) WMC=92, CBO=98, LCOM=0.92
+Signal (/tmp/django/django/dispatch/dispatcher.py:68) WMC=68, CBO=63, LCOM=0.71
+BoundField (/tmp/django/django/forms/boundfield.py:13) WMC=92, CBO=85, LCOM=0.90
+BaseForm (/tmp/django/django/forms/forms.py:52) WMC=92, CBO=82, LCOM=0.96
+BaseFormSet (/tmp/django/django/forms/formsets.py:52) WMC=111, CBO=87, LCOM=0.95
+BaseModelFormSet (/tmp/django/django/forms/models.py:681) WMC=83, CBO=111, LCOM=0.98
+MultiPartParser (/tmp/django/django/http/multipartparser.py:48) WMC=65, CBO=115, LCOM=0.83
+HttpRequest (/tmp/django/django/http/request.py:54) WMC=111, CBO=126, LCOM=0.98
+HttpResponseBase (/tmp/django/django/http/response.py:107) WMC=57, CBO=71, LCOM=0.92
+CsrfViewMiddleware (/tmp/django/django/middleware/csrf.py:165) WMC=68, CBO=86, LCOM=0.99
+DiscoverRunner (/tmp/django/django/test/runner.py:699) WMC=73, CBO=134, LCOM=0.95
+SimpleTestCase (/tmp/django/django/test/testcases.py:196) WMC=153, CBO=215, LCOM=0.97
+URLResolver (/tmp/django/django/urls/resolvers.py:503) WMC=70, CBO=126, LCOM=0.90
+SafeExceptionReporterFilter (/tmp/django/django/views/debug.py:112) WMC=53, CBO=54, LCOM=0.83
+ExceptionReporter (/tmp/django/django/views/debug.py:315) WMC=57, CBO=131, LCOM=0.92
+ChangeListTests (/tmp/django/tests/admin_changelist/tests.py:92) WMC=102, CBO=248, LCOM=0.86
+SystemChecksTestCase (/tmp/django/tests/admin_checks/tests.py:72) WMC=59, CBO=94, LCOM=0.67
+ListFiltersTests (/tmp/django/tests/admin_filters/tests.py:343) WMC=82, CBO=162, LCOM=0.85
+AdminViewBasicTest (/tmp/django/tests/admin_views/tests.py:307) WMC=116, CBO=190, LCOM=0.90
+AggregateTestCase (/tmp/django/tests/aggregation/tests.py:72) WMC=148, CBO=275, LCOM=0.96
+AggregationTests (/tmp/django/tests/aggregation_regress/tests.py:52) WMC=99, CBO=181, LCOM=0.95
+NonAggregateAnnotationTestCase (/tmp/django/tests/annotations/tests.py:59) WMC=94, CBO=206, LCOM=0.95
+TestUtilsHashPass (/tmp/django/tests/auth_tests/test_hashers.py:50) WMC=52, CBO=71, LCOM=0.78
+BulkCreateTests (/tmp/django/tests/bulk_create/tests.py:46) WMC=95, CBO=106, LCOM=0.92
+BaseCacheTests (/tmp/django/tests/cache/tests.py:323) WMC=93, CBO=118, LCOM=0.92
+CompositePKFilterTests (/tmp/django/tests/composite_pk/test_filter.py:22) WMC=57, CBO=81, LCOM=0.77
+UniqueConstraintTests (/tmp/django/tests/constraints/tests.py:445) WMC=71, CBO=98, LCOM=0.89
+CsrfViewMiddlewareTestMixin (/tmp/django/tests/csrf_tests/tests.py:231) WMC=63, CBO=65, LCOM=0.92
+DateFunctionTests (/tmp/django/tests/db_functions/datetime/test_extract_trunc.py:105) WMC=106, CBO=126, LCOM=0.77
+BasicExpressionsTests (/tmp/django/tests/expressions/tests.py:103) WMC=96, CBO=160, LCOM=0.93
+FTimeDeltaTests (/tmp/django/tests/expressions/tests.py:1901) WMC=77, CBO=107, LCOM=0.90
+CaseExpressionTests (/tmp/django/tests/expressions_case/tests.py:36) WMC=89, CBO=81, LCOM=0.87
+WindowFunctionTests (/tmp/django/tests/expressions_window/tests.py:52) WMC=71, CBO=126, LCOM=0.88
+FilteredRelationTests (/tmp/django/tests/filtered_relation/tests.py:38) WMC=63, CBO=93, LCOM=0.86
+FormsTestCase (/tmp/django/tests/forms_tests/tests/test_forms.py:83) WMC=142, CBO=342, LCOM=0.94
+FormsFormsetTestCase (/tmp/django/tests/forms_tests/tests/test_formsets.py:80) WMC=112, CBO=152, LCOM=0.88
+GenericRelationsTests (/tmp/django/tests/generic_relations/tests.py:28) WMC=71, CBO=122, LCOM=0.88
+OGRGeomTest (/tmp/django/tests/gis_tests/gdal_tests/test_geom.py:20) WMC=106, CBO=192, LCOM=0.87
+GDALRasterTests (/tmp/django/tests/gis_tests/gdal_tests/test_raster.py:19) WMC=52, CBO=91, LCOM=0.89
+GISFunctionsTests (/tmp/django/tests/gis_tests/geoapp/test_functions.py:35) WMC=112, CBO=232, LCOM=0.89
+GEOSTest (/tmp/django/tests/gis_tests/geos_tests/test_geos.py:36) WMC=182, CBO=353, LCOM=0.89
+IntrospectionTests (/tmp/django/tests/introspection/tests.py:22) WMC=72, CBO=100, LCOM=0.78
+ConstraintsTests (/tmp/django/tests/invalid_models_tests/test_models.py:2011) WMC=56, CBO=74, LCOM=0.34
+LookupTests (/tmp/django/tests/lookup/tests.py:50) WMC=111, CBO=165, LCOM=0.89
+EmailMessageTests (/tmp/django/tests/mail/tests.py:236) WMC=95, CBO=145, LCOM=0.91
+ManyToOneTests (/tmp/django/tests/many_to_one/tests.py:36) WMC=52, CBO=166, LCOM=0.86
+AutodetectorTests (/tmp/django/tests/migrations/test_autodetector.py:225) WMC=170, CBO=283, LCOM=0.95
+MigrateTests (/tmp/django/tests/migrations/test_commands.py:48) WMC=83, CBO=101, LCOM=0.90
+MakeMigrationsTests (/tmp/django/tests/migrations/test_commands.py:1630) WMC=81, CBO=152, LCOM=0.86
+OperationTests (/tmp/django/tests/migrations/test_operations.py:30) WMC=228, CBO=381, LCOM=0.93
+OptimizerTests (/tmp/django/tests/migrations/test_optimizer.py:10) WMC=64, CBO=75, LCOM=0.86
+WriterTests (/tmp/django/tests/migrations/test_writer.py:254) WMC=85, CBO=204, LCOM=0.92
+FieldFlagsTests (/tmp/django/tests/model_fields/test_field_flags.py:70) WMC=63, CBO=57, LCOM=0.67
+TestQuerying (/tmp/django/tests/model_fields/test_jsonfield.py:336) WMC=118, CBO=94, LCOM=0.84
+PaginationTests (/tmp/django/tests/pagination/tests.py:24) WMC=72, CBO=94, LCOM=0.94
+TestGeneralAggregate (/tmp/django/tests/postgres_tests/test_aggregates.py:53) WMC=55, CBO=81, LCOM=0.84
+TestQuerying (/tmp/django/tests/postgres_tests/test_array.py:209) WMC=59, CBO=82, LCOM=0.84
+PrefetchRelatedTests (/tmp/django/tests/prefetch_related/tests.py:80) WMC=66, CBO=84, LCOM=0.90
+QuerySetSetOperationTests (/tmp/django/tests/queries/test_qs_combinators.py:34) WMC=89, CBO=129, LCOM=0.91
+Queries1Tests (/tmp/django/tests/queries/tests.py:121) WMC=92, CBO=179, LCOM=0.91
+RequestsTests (/tmp/django/tests/requests_tests/tests.py:42) WMC=57, CBO=83, LCOM=0.88
+SchemaTests (/tmp/django/tests/schema/tests.py:104) WMC=448, CBO=442, LCOM=0.96
+SelectForUpdateTests (/tmp/django/tests/select_for_update/tests.py:37) WMC=66, CBO=100, LCOM=0.93
+SessionTestsMixin (/tmp/django/tests/sessions_tests/tests.py:43) WMC=67, CBO=79, LCOM=0.83
+SyndicationFeedTest (/tmp/django/tests/syndication_tests/tests.py:82) WMC=62, CBO=86, LCOM=0.86
+ClientTest (/tmp/django/tests/test_client/tests.py:65) WMC=105, CBO=105, LCOM=0.90
+DiscoverRunnerTests (/tmp/django/tests/test_runner/test_discover_runner.py:115) WMC=69, CBO=114, LCOM=0.93
+ExceptionReporterTests (/tmp/django/tests/view_tests/tests/test_debug.py:566) WMC=61, CBO=109, LCOM=0.74

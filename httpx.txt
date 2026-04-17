@@ -1,0 +1,54 @@
+Analizuję: /tmp/httpx
+
+================================================================================
+RAPORT METRYK OBIEKTOWYCH (CK)
+================================================================================
+
+Znaleziono 107 klas
+
+Klasa                                 WMC   DIT   CBO  Metod   LCOM  God?
+---------------------------------------------------------------------------
+Response                              132     0   121     42 0.96  !!!
+BaseClient                             75     0   105     32 0.97  !!!
+Headers                                65     0    77     20 0.84  !!!
+Client                                 56     1   125     20 0.95  !!!
+AsyncClient                            56     1   125     20 0.95  !!!
+URL                                    54     0    54     28 0.91  !!!
+Cookies                                48     0    51     15 0.85 
+QueryParams                            42     0    47     22 0.81 
+Request                                33     0    62      8 0.84 
+DigestAuth                             29     1    92      7 0.92 
+Timeout                                26     0    17      4 0.13 
+FileField                              23     0    43      5 0.81 
+URLPattern                             23     0    26      6 0.70 
+MultipartStream                        19     1    35      7 0.83 
+ParseResult                            14     1    17      4 0.71 
+LineDecoder                            12     0    10      3 0.00 
+HTTPTransport                          12     1    67      5 0.00 
+AsyncHTTPTransport                     12     1    68      5 0.00 
+WSGITransport                          12     1    53      2 0.00 
+Auth                                   11     0    15      3 0.50 
+DataField                              11     0    16      5 0.83 
+ASGITransport                          11     1    52      2 0.00 
+Proxy                                  10     0    20      3 0.50 
+BrotliDecoder                          10     1    15      3 0.33 
+ZStandardDecoder                       10     1    20      3 0.00 
+codes                                  10     1    71      9 1.00 
+TestServer                             10     1    23      5 0.93 
+ByteChunker                             9     0    15      3 0.25 
+TextChunker                             9     0    14      3 0.25 
+TestHeaderParamHTML5Formatting          8     0     7      4 0.00 
+
+--- Statystyki ---
+WMC: śr 9.5, max 132
+DIT: śr 1.3, max 5
+CBO: śr 18.1, max 125
+LCOM: śr 0.2, max 1.0
+
+--- God classes (6) ---
+BaseClient (/tmp/httpx/httpx/_client.py:188) WMC=75, CBO=105, LCOM=0.97
+Client (/tmp/httpx/httpx/_client.py:594) WMC=56, CBO=125, LCOM=0.95
+AsyncClient (/tmp/httpx/httpx/_client.py:1307) WMC=56, CBO=125, LCOM=0.95
+Headers (/tmp/httpx/httpx/_models.py:139) WMC=65, CBO=77, LCOM=0.84
+Response (/tmp/httpx/httpx/_models.py:515) WMC=132, CBO=121, LCOM=0.96
+URL (/tmp/httpx/httpx/_urls.py:15) WMC=54, CBO=54, LCOM=0.91

@@ -1,0 +1,51 @@
+Analizuję: /tmp/flask
+
+================================================================================
+RAPORT METRYK OBIEKTOWYCH (CK)
+================================================================================
+
+Znaleziono 161 klas
+
+Klasa                                 WMC   DIT   CBO  Metod   LCOM  God?
+---------------------------------------------------------------------------
+Flask                                 157     1   237     35 0.98  !!!
+App                                    82     1   151     35 0.99  !!!
+Blueprint                              68     1   117     28 0.98  !!!
+Scaffold                               40     0    73     27 0.97 
+Config                                 35     1    74      9 0.95 
+AppContext                             31     0    64     13 0.87 
+Request                                28     1    34     11 0.96 
+FlaskGroup                             24     2    66      6 0.87 
+TestRoutes                             22     0    27      9 0.88 
+TaggedJSONSerializer                   20     0    35      7 0.88 
+DispatchingJinjaLoader                 20     1    28      6 0.75 
+FlaskClient                            18     1    64      7 0.82 
+SessionInterface                       17     0    20     13 0.92 
+TestGenericHandlers                    17     0    24      5 0.88 
+TestUrlFor                             16     0    14      6 0.00 
+TestSendfile                           14     0    28      3 0.00 
+_AppCtxGlobals                         13     0    18      9 0.12 
+JSONProvider                           13     0    20      7 0.92 
+SecureCookieSessionInterface           12     1    51      3 0.93 
+TestStreaming                          12     0    22      5 1.00 
+MethodView                             11     1    25      2 0.00 
+EnvironBuilder                         10     1    28      2 0.00 
+Blueprint                               9     1    40      4 1.00 
+ScriptInfo                              9     0    20      2 0.33 
+BlueprintSetupState                     8     0    27      2 0.33 
+TestHelpers                             8     0    19      2 0.00 
+CertParamType                           7     1    20      2 0.00 
+ConfigAttribute                         7     0    16      5 0.62 
+_CollectErrors                          7     0     9      4 0.33 
+DefaultJSONProvider                     6     1    24      3 1.00 
+
+--- Statystyki ---
+WMC: śr 5.6, max 157
+DIT: śr 0.8, max 3
+CBO: śr 12.3, max 237
+LCOM: śr 0.2, max 1.0
+
+--- God classes (3) ---
+Flask (/tmp/flask/src/flask/app.py:109) WMC=157, CBO=237, LCOM=0.98
+App (/tmp/flask/src/flask/sansio/app.py:59) WMC=82, CBO=151, LCOM=0.99
+Blueprint (/tmp/flask/src/flask/sansio/blueprints.py:119) WMC=68, CBO=117, LCOM=0.98

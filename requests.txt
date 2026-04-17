@@ -1,0 +1,55 @@
+Analizuję: /tmp/requests
+
+================================================================================
+RAPORT METRYK OBIEKTOWYCH (CK)
+================================================================================
+
+Znaleziono 86 klas
+
+Klasa                                 WMC   DIT   CBO  Metod   LCOM  God?
+---------------------------------------------------------------------------
+TestRequests                          530     0   334    183 0.99  !!!
+Response                               68     0    82     22 0.94  !!!
+HTTPAdapter                            64     1   130     15 0.92  !!!
+RequestsCookieJar                      63     1    43     24 0.99  !!!
+PreparedRequest                        63     1    92     13 0.91  !!!
+TestCaseInsensitiveDict                61     0    22     17 0.00  !!!
+Session                                52     1    91     19 0.93  !!!
+SessionRedirectMixin                   45     0    84      6 0.98 
+RequestEncodingMixin                   35     0    43      3 1.00 
+TestPreparingURLs                      35     0    67     13 0.00 
+HTTPDigestAuth                         34     1    93      8 0.80 
+TestSuperLen                           27     0    41     12 1.00 
+TestTestServer                         26     0    47     11 0.00 
+Server                                 20     1    40     10 0.86 
+TestTimeout                            17     0    25      7 0.00 
+MockRequest                            16     0    20     14 0.87 
+TestCaseInsensitiveDict                16     0    12      8 0.00 
+CaseInsensitiveDict                    14     1    20     10 0.81 
+Request                                 9     1    18      3 0.50 
+TestGetEnvironProxies                   9     0    11      5 0.00 
+RequestHooksMixin                       8     0    10      2 0.00 
+TestExtractZippedPaths                  8     0    25      3 0.00 
+TestLookupDict                          7     0    11      4 0.00 
+TestContentEncodingDetection            7     0     8      3 0.00 
+CustomMapping                           6     1     7      6 0.00 
+TestGetNetrcAuth                        6     0     9      3 0.00 
+TestGuessJSONUTF                        6     0     8      3 0.00 
+TestStream                              5     0     7      5 0.42 
+TestMorselToCookieExpires               5     0    13      3 0.00 
+RedirectSession                         5     1    19      4 0.86 
+
+--- Statystyki ---
+WMC: śr 15.6, max 530
+DIT: śr 0.9, max 3
+CBO: śr 19.3, max 334
+LCOM: śr 0.2, max 1.0
+
+--- God classes (7) ---
+HTTPAdapter (/tmp/requests/src/requests/adapters.py:144) WMC=64, CBO=130, LCOM=0.92
+RequestsCookieJar (/tmp/requests/src/requests/cookies.py:176) WMC=63, CBO=43, LCOM=0.99
+PreparedRequest (/tmp/requests/src/requests/models.py:315) WMC=63, CBO=92, LCOM=0.91
+Response (/tmp/requests/src/requests/models.py:642) WMC=68, CBO=82, LCOM=0.94
+Session (/tmp/requests/src/requests/sessions.py:356) WMC=52, CBO=91, LCOM=0.93
+TestRequests (/tmp/requests/tests/test_requests.py:84) WMC=530, CBO=334, LCOM=0.99
+TestCaseInsensitiveDict (/tmp/requests/tests/test_requests.py:2290) WMC=61, CBO=22, LCOM=0.00

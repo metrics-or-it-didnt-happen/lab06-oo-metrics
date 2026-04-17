@@ -468,4 +468,4 @@ O: Nic - to znaczy, że Twoja klasa jest zbiorem niepowiązanych metod, które n
 
 *"God class to taka klasa, która wie o wszystkim, robi wszystko i jest jedyną rzeczą, której dotknięcie powoduje awarię produkcji o 3 w nocy."* - anonimowy programista po trzecim on-callu z rzędu
 
-(screen.jpg)
+(screen.png)

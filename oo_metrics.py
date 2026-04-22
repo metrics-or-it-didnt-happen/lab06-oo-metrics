@@ -62,6 +62,7 @@ class OOAnalyzer(ast.NodeVisitor):
         For full MRO analysis we'd need to resolve imports,
         which is beyond the scope of static analysis.
         """
+        # wyciąganie nazwy bazowych klas z różnych typów wyrażeń
         def get_base_name(expr: ast.expr) -> str | None:
             if isinstance(expr, ast.Name):
                 return expr.id
@@ -73,11 +74,14 @@ class OOAnalyzer(ast.NodeVisitor):
                 return get_base_name(expr.func)
             return None
 
+        #  funkcja do rekurencyjnego liczenia DIT, z zabezpieczeniem przed cyklami przez seen set
         def class_dit(class_node: ast.ClassDef, seen: set[str]) -> int:
+            # ochrona przed zapętleniem
             if class_node.name in seen:
                 return 0
             seen.add(class_node.name)
 
+            # zliczamy DIT dla bazowych klas, wchodząc rekurencyjnie i bierzemy maksimum
             base_dits: list[int] = []
             for base in class_node.bases:
                 base_name = get_base_name(base)
@@ -100,12 +104,14 @@ class OOAnalyzer(ast.NodeVisitor):
         Count unique names referenced in the class body that look like
         external classes or modules (Name nodes and Attribute nodes).
         """
+        # może niekompletna, może nadmierna, ale jakaś baza wbudowanych nazw, które ignorujemy przy liczeniu CBO
         builtins = {
             "self", "cls", "str", "int", "float", "bool", "list",
             "dict", "set", "tuple", "None", "True", "False",
             "bytes", "complex", "range", "object", "type",
         }
 
+        # wyciąganie nazwy z różnych typów wyrażeń, żeby móc zidentyfikować potencjalne odniesienia do klas/modułów
         def get_root_name(expr: ast.expr) -> str | None:
             if isinstance(expr, ast.Name):
                 return expr.id
@@ -117,6 +123,7 @@ class OOAnalyzer(ast.NodeVisitor):
                 return get_root_name(expr.func)
             return None
 
+        # zbieranie kandydatów do jednego zestawu po nazwach, żeby potem łatwo policzyć unikalne
         def collect_targets(target: ast.AST, names: set[str]) -> None:
             if isinstance(target, ast.Name):
                 names.add(target.id)
@@ -129,6 +136,7 @@ class OOAnalyzer(ast.NodeVisitor):
             elif isinstance(target, ast.Starred):
                 collect_targets(target.value, names)
 
+        # ogólna pętla po całym drzewie AST klasy, żeby zebrać wszystkie lokalne nazwy...
         local_names: set[str] = set()
         for child in ast.walk(node):
             if isinstance(child, (ast.FunctionDef, ast.AsyncFunctionDef)):
@@ -158,6 +166,7 @@ class OOAnalyzer(ast.NodeVisitor):
             elif isinstance(child, ast.comprehension):
                 collect_targets(child.target, local_names)
 
+        # ...potem odfiltrować je od potencjalnych odniesień do zewnętrznych klas/modułów
         candidates: set[str] = set()
         for expr in ast.walk(node):
             if isinstance(expr, ast.Name) and isinstance(expr.ctx, ast.Load):
